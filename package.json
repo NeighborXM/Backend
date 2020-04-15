@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.tsx",
   "scripts": {
-    "start": "node server.tsx",
+    "start": "nodemon ./dist/server.js",
+    "build": "tsc",
+    "dev": "ts-node ./lib/server.ts",
+    "prod": "npm run build && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/NeighborXM/Backend/issues"
   },
-  "homepage": "https://github.com/NeighborXM/Backend#readme"
+  "homepage": "https://github.com/NeighborXM/Backend#readme",
+  "dependencies": {
+    "@types/node": "^13.11.1",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.9.9",
+    "nodemon": "^2.0.3"
+  }
 }
