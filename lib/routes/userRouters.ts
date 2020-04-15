@@ -15,11 +15,18 @@ export class Routes {
     // User
     app.route('/user')
       //get all users
-      .get(this.userController.getUsers)
+      .get((req: Request, res: Response, next: NextFunction) => {
+        //middleware
+        if(req.query.key !== process.env.CRYPTO_KEY) {
+          res.status(401).send('You are not permitted to view this page');
+        } else {
+          next();
+        }
+      }, this.userController.getUsers)
       //create new user
       .post(this.userController.addNewUser);
 
-    //User Details / Editing User 
+    //User Details / Editing User
     app.route('/user/:userId')
       //get specific user
       .get(this.userController.getUserWithID)
