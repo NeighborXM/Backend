@@ -15,7 +15,7 @@ export class Routes {
     // User
     app.route('/user')
       //get all users
-      .get((req: Request, res: Response, next: NextFunction) => {
+      .get((req: Request, res: Response, next: Function) => {
         //middleware
         if(req.query.key !== process.env.CRYPTO_KEY) {
           res.status(401).send('You are not permitted to view this page');
