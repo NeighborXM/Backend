@@ -20,20 +20,27 @@ export const NeedSchema = new Schema({
     required: 'Enter your email address (primary)'
   },
   location: {
-    
+    type: {
+     type: String, // Don't do `{ location: { type: String } }`
+     enum: ['Point'], // 'location.type' must be 'Point'
+     required: true
+   },
+   coordinates: {
+     type: [Number],
+     required: true
+   }
   },
   timeDate: {
-
+    type: Date,
+    default: Date.now
   },
   requestType: {
-    //Enumerator - (Food Assistance, Emergency Assistance, Mental Health, Pastoral Care, Prayer (In Order))
+    type: String,
+    enum: ['Food Assistance', 'Emergency Assistance', 'Mental Health', 'Pastoral Care', 'Prayer'],
+    default: 'Emergency Assistance'
   },
   description: {
     type: String,
     maxLength: 100
-  },
-  created_date: {
-    type: Date,
-    default: Date.now
   }
 })
